@@ -152,18 +152,21 @@ int main(void)
 	CANDiagnosticRequestRcvFlag = 0;
 	HAL_Delay(2000);
 
-	if (securityAccessSeedGenerate(&hcan, &CANRxHeader, CANRxBuffer))
-	{
-		while (CANDiagnosticRequestRcvFlag != 1);
-		CANDiagnosticRequestRcvFlag = 0;
-		HAL_Delay(1000);
-		flowControlResponse(&hcan, &CANRxHeader, CANRxBuffer);
+	readDataByIdentifierResponse (&hcan, &CANRxHeader, CANRxBuffer);
+//  writeDataByIdentifierResponse(&hcan, &CANRxHeader, CANRxBuffer);
 
-		while (CANDiagnosticRequestRcvFlag != 1);
-		CANDiagnosticRequestRcvFlag = 0;
-		HAL_Delay(1000);
-		securityAccessKeyResponse(&hcan);
-	}
+//	if (securityAccessSeedGenerate(&hcan, &CANRxHeader, CANRxBuffer))
+//	{
+//		while (CANDiagnosticRequestRcvFlag != 1);
+//		CANDiagnosticRequestRcvFlag = 0;
+//		HAL_Delay(1000);
+//		flowControlResponse(&hcan, &CANRxHeader, CANRxBuffer);
+//
+//		while (CANDiagnosticRequestRcvFlag != 1);
+//		CANDiagnosticRequestRcvFlag = 0;
+//		HAL_Delay(1000);
+//		securityAccessKeyResponse(&hcan);
+//	}
 
      /* USER CODE END WHILE */
 

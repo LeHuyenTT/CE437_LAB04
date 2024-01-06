@@ -146,29 +146,34 @@ int main(void)
   while (1)
   {
 
- 	securityAccessSeedRequest(&hcan);
+	  readDataByIdenfierRequest (&hcan);
+//	  writeShortDataByIdentifierRequest(&hcan);
+// 	securityAccessSeedRequest(&hcan);
  	HAL_Delay(4000);
 
  	while (CANDiagnosticResponseRcvFlag != 1);
 	CANDiagnosticResponseRcvFlag = 0;
-	if (securityAccessSeedResponseCheck(CANRxBuffer))
+
+	readDataByIdenfierResponseCheck(CANRxBuffer);
+//	writeDataByIdenfierResponseCheck(CANRxBuffer);
+//	if (securityAccessSeedResponseCheck(CANRxBuffer))
 	{
-		HAL_Delay(1000);
-		securityAccessUnlockRequest(&hcan);
+//		HAL_Delay(1000);
+//		securityAccessUnlockRequest(&hcan);
 
 //		HAL_Delay(100);
-		while (CANDiagnosticResponseRcvFlag != 1);
-		CANDiagnosticResponseRcvFlag = 0;
-		HAL_Delay(1000);
-		if (flowControlCheck(CANRxBuffer))
-		{
-			HAL_GPIO_TogglePin(GPIO_Port, LEDB_Pin);
-			securityRemainKeySend(&hcan);
-
-			while (CANDiagnosticResponseRcvFlag != 1);
-			CANDiagnosticResponseRcvFlag = 0;
-			HAL_Delay(2000);
-		}
+//		while (CANDiagnosticResponseRcvFlag != 1);
+//		CANDiagnosticResponseRcvFlag = 0;
+//		HAL_Delay(1000);
+//		if (flowControlCheck(CANRxBuffer))
+//		{
+//			HAL_GPIO_TogglePin(GPIO_Port, LEDB_Pin);
+//			securityRemainKeySend(&hcan);
+//
+//			while (CANDiagnosticResponseRcvFlag != 1);
+//			CANDiagnosticResponseRcvFlag = 0;
+//			HAL_Delay(2000);
+//		}
 	}
      /* USER CODE END WHILE */
 
